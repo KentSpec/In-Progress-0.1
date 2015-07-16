@@ -18,16 +18,32 @@ public class TestScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		/*Vector3 mousePos = Input.mousePosition;
+		Vector3 newRotation = Vector3.zero;
+
+		newRotation.z = Vector3.Angle(transform.position, mousePos);
+
+		Debug.Log(newRotation.z);
+
+		transform.eulerAngles = newRotation - new Vector3 (0.0f, 0.0f, 360.0f);
+	*/
 
 
-		float camDis = Camera.main.transform.position.y - transform.position.y;
+		/*Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+		Vector3 dir = Input.mousePosition - pos;
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+*/
 
-		Vector3 mouse = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, camDis));
-
-		float AngleRad = Mathf.Atan2 (mouse.y - transform.position.y, mouse.x - transform.position.x);
-		float angle = (360 / Mathf.PI) * AngleRad;
-
-		transform.eulerAngles = new Vector3 (transform.rotation.x, transform.rotation.y, angle);
+		Vector3 mousePos = Input.mousePosition;
+		mousePos.z = 5.23f;
+		
+		Vector3 objectPos = Camera.main.WorldToScreenPoint (transform.position);
+		mousePos.x = mousePos.x - objectPos.x;
+		mousePos.y = mousePos.y - objectPos.y;
+		
+		float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
 	}
 }
