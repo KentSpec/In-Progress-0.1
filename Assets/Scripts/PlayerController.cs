@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
 	InputManager InputM;
 	MovementManager Movement;
 	TestScript Tester;
-
-
+	
 	public float MovementSpeed;
 	public float SprintModifer;
 	public float TimeScale;

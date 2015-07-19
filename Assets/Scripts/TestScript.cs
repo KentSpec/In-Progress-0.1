@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TestScript : MonoBehaviour 
 {
-
+	public GameObject bulletPrefab;
 	public GameObject bulletInstance;
 	public Transform startPos;
 	
@@ -21,6 +21,9 @@ public class TestScript : MonoBehaviour
 
 	public void SpawnProjectile ()
 	{
-		Instantiate (bulletInstance, startPos.position, startPos.rotation);
+		bulletInstance = Instantiate (bulletPrefab, startPos.position, startPos.rotation) as GameObject;
+		bulletInstance.GetComponent<BulletBehavior>().Direction = startPos.eulerAngles;
+
+		Debug.Log(startPos.forward);
 	}
 }
