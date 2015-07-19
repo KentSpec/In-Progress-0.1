@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
 {
 	InputManager InputM;
 	MovementManager Movement;
-	
+	TestScript Tester;
+
+
 	public float MovementSpeed;
 	public float SprintModifer;
 	public float TimeScale;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
 	{
 		InputM = GetComponent<InputManager>();
 		Movement = GetComponent<MovementManager>();
+		Tester = GetComponent<TestScript>();
 
 		isRunning = false;
 	}
@@ -60,9 +63,10 @@ public class PlayerController : MonoBehaviour
 
 	void PlayerAttack()
 	{
-		if (InputM.ReceiveInput("space", KeyState.KeyHeld))
+		if (InputM.ReceiveInput("space", KeyState.KeyDown))
 		{
 			Debug.Log("Space has been held");
+			Tester.SpawnProjectile();
 		}
 
 		if (InputM.ReceiveInput("space", KeyState.KeyHeld))
