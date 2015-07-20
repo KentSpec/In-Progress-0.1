@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 		Tester = GetComponent<TestScript>();
 
 		isRunning = false;
+
 	}
 	
 	// Update is called once per frame
