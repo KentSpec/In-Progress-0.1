@@ -4,8 +4,9 @@ using System.Collections;
 public class TestScript : MonoBehaviour 
 {
 	public GameObject bulletPrefab;
-	public GameObject bulletInstance;
-	public Transform startPos;
+
+	private GameObject bulletInstance;
+	private Transform startPos;
 	
 	// Use this for initialization
 	void Start () 
@@ -22,8 +23,13 @@ public class TestScript : MonoBehaviour
 	public void SpawnProjectile ()
 	{
 		bulletInstance = Instantiate (bulletPrefab, startPos.position, startPos.rotation) as GameObject;
-		bulletInstance.GetComponent<BulletBehavior>().Direction = startPos.eulerAngles;
+		//bulletInstance.GetComponent<BulletBehavior>().SetDirection(startPos.eulerAngles);
 
-		Debug.Log(startPos.forward);
+		//Debug.Log(startPos.eulerAngles);
+	}
+
+	public void SetStart (Transform NewStart)
+	{
+		startPos = NewStart;
 	}
 }

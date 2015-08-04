@@ -3,12 +3,10 @@ using System.Collections;
 
 public class BulletBehavior : MonoBehaviour 
 {
-	public Vector3 Direction;
-	public float Speed;
-
 	Rigidbody2D BulletBody;
 
-	Vector3 V;
+	private float Speed = 1;
+	private Vector3 Direction = Vector3.zero;
 
 	// Use this for initialization
 	void Start () 
@@ -19,9 +17,27 @@ public class BulletBehavior : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		V = new Vector3 (Direction.x, Direction.y, 0.0f) * Speed;
 
+		transform.Translate(Vector3.right * 0.25f);
+	}
 
-		BulletBody.velocity = V;
+	public void SetDirection (Vector3 NewDirection)
+	{
+		Direction = NewDirection;
+	}
+
+	public void SetSpeed (float NewSpeed)
+	{
+		Speed = NewSpeed;
+	}
+
+	public Vector3 GetDirection ()
+	{
+		return Direction;
+	}
+
+	public float GetSpeed ()
+	{
+		return Speed;
 	}
 }

@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
 	InputManager InputM;
 	MovementManager Movement;
 	TestScript Tester;
-	
+
+	public GameObject PlayerRef;
+
 	public float MovementSpeed;
 	public float SprintModifer;
 	public float TimeScale;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
 		if (InputM.ReceiveInput("space", KeyState.KeyDown))
 		{
 			Debug.Log("Space has been held");
+			Tester.SetStart (PlayerRef.transform);
 			Tester.SpawnProjectile();
 		}
 
